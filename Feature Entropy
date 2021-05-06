@@ -1,0 +1,11 @@
+clear all;
+close,clc;
+n=input('n');
+f=@(x)(exp(n.*cos(x)).*(sin(x)).^(n-2));
+answ=integral(f,0,pi);
+E1=gamma(n/2).*answ./gamma((n-1)/2)./sqrt(pi);
+f2=@(x)(exp(n.*cos(x)).*cos(x).*(sin(x)).^(n-2));
+answ2=integral(f2,0,pi);
+E2=gamma(n/2).*n.*answ2./gamma((n-1)/2)./sqrt(pi);
+hn=log(E1)-E2./E1
+H=log(2708^2)+hn+7.8
